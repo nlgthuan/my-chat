@@ -1,4 +1,5 @@
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -17,9 +18,10 @@ export default function Message({ message }: { message: ChatMessage }) {
           {message.role === "user" ? "US" : "AS"}
         </AvatarFallback>
       </Avatar>
-      <div className="flex-1 prose dark:prose-invert max-w-none prose-pre:bg-transparent prose-pre:p-0">
+      <div className="flex-1 overflow-x-auto prose dark:prose-invert max-w-none prose-pre:bg-transparent prose-pre:p-0">
         <Markdown
           children={message.content}
+          remarkPlugins={[remarkGfm]}
           components={{
             code(props) {
               const { children, className, node, ...rest } = props;
