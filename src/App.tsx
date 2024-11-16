@@ -8,8 +8,50 @@ function App() {
         <div className="p-2">
           <SidebarTrigger />
         </div>
-        <div className="flex-1">main chat</div>
-        <div>Chat box </div>
+        <div className="flex-1 overflow-y-auto">
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+          <p>main chat</p>
+        </div>
+        <div>
+            <div> This is the chat box </div>
+        </div>
       </main>
     </MainLayout>
   );
