@@ -77,7 +77,7 @@ function App() {
   };
 
   const conversation = useLiveQuery(
-    () => db.conversations.get(conversationID),
+    async () => db.conversations.get(conversationID),
     [conversationID],
   );
   const chatMessages = conversation?.messages;
