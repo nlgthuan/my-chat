@@ -19,7 +19,7 @@ export function AppSidebar() {
   const conversations = useLiveQuery(async () => db.conversations.toArray());
 
   return (
-    <Sidebar>
+    <Sidebar className="min-w-0">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Chats</SidebarGroupLabel>
@@ -35,8 +35,11 @@ export function AppSidebar() {
 
                       setSearchParams(newParams);
                     }}
+                    asChild
                   >
-                    {conversation.title}
+                    <span className="truncate min-w-0">
+                      {conversation.title}
+                    </span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

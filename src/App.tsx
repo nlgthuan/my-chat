@@ -46,8 +46,10 @@ function App() {
     } as const;
 
     if (conversationID === -1) {
+      const title = text.length < 30 ? text : text.slice(0, 30);
       const newConversationID = await addConversation({
         messages: [newMessage],
+        title,
       });
       const newParams = new URLSearchParams();
       newParams.set("c", String(newConversationID));
