@@ -4,7 +4,9 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupLabel,
+  SidebarMenu,
 } from "@/components/ui/sidebar";
+import DialogAddKey from "./DialogAddKey";
 
 export function AppSidebar() {
   return (
@@ -14,7 +16,11 @@ export function AppSidebar() {
           <SidebarGroupLabel>Chats</SidebarGroupLabel>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <SidebarMenu>
+          <DialogAddKey />
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
