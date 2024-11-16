@@ -2,12 +2,12 @@ import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-import { Message as MessageType } from "@/App";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 import CopyButton from "./CopyButton";
+import type { ChatMessage } from "@/db";
 
-export default function Message({ message }: { message: MessageType }) {
+export default function Message({ message }: { message: ChatMessage }) {
   return (
     <div className="flex p-4 gap-4 rounded-md hover:bg-gray-100">
       <Avatar>
