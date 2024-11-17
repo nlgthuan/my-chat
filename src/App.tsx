@@ -11,6 +11,7 @@ import { useSearchParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 import Message from "./components/Message";
+import Combobox from "./components/Combobox";
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -75,6 +76,7 @@ function App() {
     const textarea = textareaRef.current;
     if (textarea) {
       textarea.style.height = "auto";
+      textarea.scrollTo(0, textarea.scrollHeight);
     }
   };
 
@@ -110,8 +112,9 @@ function App() {
   return (
     <MainLayout>
       <main className="w-full h-svh flex flex-col min-w-0">
-        <div className="p-2">
+        <div className="p-2 flex items-center justify-between">
           <SidebarTrigger />
+          <Combobox />
         </div>
         <div className="flex-1 overflow-y-auto py-4">
           <div className="px-2 mx-auto w-full max-w-5xl">
