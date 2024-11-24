@@ -1,25 +1,25 @@
-import { ChangeEvent, useCallback, useRef, useState } from "react";
-import { Send } from "lucide-react";
+import { useLiveQuery } from 'dexie-react-hooks';
+import { Send } from 'lucide-react';
+import { ChangeEvent, useCallback, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 
-import MainLayout from "@/layouts/MainLayout";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Conversation, db } from "./db";
-import { useLiveQuery } from "dexie-react-hooks";
-import { useSearchParams } from "react-router-dom";
-import { v4 as uuid } from "uuid";
+import Combobox from './components/Combobox';
+import Message from './components/Message';
+import { Conversation, db } from './db';
 
-import Message from "./components/Message";
-import Combobox from "./components/Combobox";
+import { Button } from '@/components/ui/button';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import { Textarea } from '@/components/ui/textarea';
+import MainLayout from '@/layouts/MainLayout';
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const conversationID = Number(searchParams.get("c") ?? -1);
+  const conversationID = Number(searchParams.get('c') ?? -1);
 
   async function addConversation({
     title,
@@ -28,13 +28,13 @@ function App() {
   }: Partial<Conversation>): Promise<number> {
     try {
       const id = await db.conversations.add({
-        title: title ?? "New conversation",
-        model: model ?? "gpt-4o",
+        title: title ?? 'New conversation',
+        model: model ?? 'gpt-4o',
         messages: messages ?? [],
       });
 
       return id;
-    } catch (error) {
+    } catch {
       return -1;
     }
   }
@@ -43,7 +43,7 @@ function App() {
     const newMessage = {
       uuid: uuid(),
       content: text,
-      role: "user",
+      role: 'user',
     } as const;
 
     if (conversationID === -1) {
@@ -53,7 +53,7 @@ function App() {
         title,
       });
       const newParams = new URLSearchParams();
-      newParams.set("c", String(newConversationID));
+      newParams.set('c', String(newConversationID));
       setSearchParams(newParams);
     } else {
       const conversation = await db.conversations.get(conversationID);
@@ -72,10 +72,10 @@ function App() {
       }
     }
 
-    setText("");
+    setText('');
     const textarea = textareaRef.current;
     if (textarea) {
-      textarea.style.height = "auto";
+      textarea.style.height = 'auto';
       textarea.scrollTo(0, textarea.scrollHeight);
     }
   };
@@ -87,12 +87,12 @@ function App() {
   const chatMessages = conversation?.messages;
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       if (!event.shiftKey) {
         event.preventDefault();
         submitChat();
       } else {
-        console.log("Shift + Enter pressed - new line");
+        console.log('Shift + Enter pressed - new line');
       }
     }
   };
@@ -104,7 +104,7 @@ function App() {
   const adjustTextareaHeight = useCallback(() => {
     const textarea = textareaRef.current;
     if (textarea) {
-      textarea.style.height = "auto";
+      textarea.style.height = 'auto';
       textarea.style.height = `${textarea.scrollHeight}px`;
     }
   }, []);

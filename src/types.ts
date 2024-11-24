@@ -1,4 +1,4 @@
-type LLMProvider = "openai";
+type LLMProvider = 'openai';
 
 interface Model {
   id: string;

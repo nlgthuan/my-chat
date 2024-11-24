@@ -1,3 +1,8 @@
+import { useLiveQuery } from 'dexie-react-hooks';
+import { useSearchParams } from 'react-router-dom';
+
+import DialogAddKey from './DialogAddKey';
+
 import {
   Sidebar,
   SidebarContent,
@@ -8,11 +13,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import DialogAddKey from "./DialogAddKey";
-import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "@/db";
-import { useSearchParams } from "react-router-dom";
+} from '@/components/ui/sidebar';
+import { db } from '@/db';
+
 
 export function AppSidebar() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,10 +31,10 @@ export function AppSidebar() {
               {conversations?.map((conversation) => (
                 <SidebarMenuItem key={conversation.id}>
                   <SidebarMenuButton
-                    isActive={Number(searchParams.get("c")) === conversation.id}
+                    isActive={Number(searchParams.get('c')) === conversation.id}
                     onClick={() => {
                       const newParams = new URLSearchParams();
-                      newParams.set("c", String(conversation.id));
+                      newParams.set('c', String(conversation.id));
 
                       setSearchParams(newParams);
                     }}

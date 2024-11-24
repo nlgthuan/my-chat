@@ -1,3 +1,9 @@
+import { Settings } from 'lucide-react';
+import { useState } from 'react';
+
+import { Button } from './ui/button';
+import { SidebarMenuButton, SidebarMenuItem } from './ui/sidebar';
+
 import {
   Dialog,
   DialogContent,
@@ -7,21 +13,19 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogClose,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
-import { Settings } from "lucide-react";
-import { Button } from "./ui/button";
-import { useState } from "react";
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+
+
 
 export default function DialogAddKey() {
   const [openaiKey, setOpenaiKey] = useState<string>(() => {
-    return localStorage.getItem("openaiKey") || "";
+    return localStorage.getItem('openaiKey') || '';
   });
 
   const handleSave = () => {
-    localStorage.setItem("openaiKey", openaiKey);
+    localStorage.setItem('openaiKey', openaiKey);
   };
   return (
     <Dialog>
